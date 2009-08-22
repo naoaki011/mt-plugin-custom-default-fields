@@ -1,0 +1,56 @@
+#plugin name
+name: CustomDefaultFields
+version: 0.1.3.1
+
+#about this plugin
+description: <__trans phrase="Customizing default field.">
+author_name: <__trans phrase="toi-planning">
+author_link: http://tec.toi-planning.net/
+plugin_link: http://tec.toi-planning.net/mt/customdefaultfields/
+doc_link: http://tec.toi-planning.net/mt/customdefaultfields#manual
+
+#Localization
+l10n_class: CustomDefaultFields::L10N
+
+#system_config_template: system_config.tmpl
+blog_config_template: blog_config.tmpl
+
+settings:
+    hide_title:
+    hide_body:
+    hide_extended:
+
+    title_label:
+        Default: <__trans phrase="Title">
+    body_label:
+        Default: <__trans phrase="Body">
+    extended_label:
+        Default: <__trans phrase="Extended">
+    excerpt_label:
+        Default: <__trans phrase="Excerpt">
+    categories_label:
+        Default: <__trans phrase="Categories">
+
+    title_is_textarea:
+    title_textarea_rows:
+
+    category_selector_height:
+
+    page_hide_title:
+    page_hide_body:
+    page_hide_extended:
+
+    page_title_label:
+        Default: <__trans phrase="Title">
+    page_body_label:
+        Default: <__trans phrase="Body">
+    page_extended_label:
+        Default: <__trans phrase="Extended">
+    page_excerpt_label:
+        Default: <__trans phrase="Excerpt">
+
+    page_title_is_textarea:
+    page_title_textarea_rows:
+
+callbacks:
+    MT::App::CMS::template_source.edit_entry: CustomDefaultFields::App::source_edit_entry
