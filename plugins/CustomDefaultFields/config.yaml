@@ -26,8 +26,12 @@ settings:
         Default: <__trans phrase="Body">
     extended_label:
         Default: <__trans phrase="Extended">
+    tags_label:
+        Default: <__trans phrase="Tags">
     excerpt_label:
         Default: <__trans phrase="Excerpt">
+    keywords_label:
+        Default: <__trans phrase="Keywords">
     categories_label:
         Default: <__trans phrase="Categories">
 
@@ -46,8 +50,12 @@ settings:
         Default: <__trans phrase="Body">
     page_extended_label:
         Default: <__trans phrase="Extended">
+    page_tags_label:
+        Default: <__trans phrase="Tags">
     page_excerpt_label:
         Default: <__trans phrase="Excerpt">
+    page_keywords_label:
+        Default: <__trans phrase="Keywords">
 
     page_title_is_textarea:
     page_title_textarea_rows:

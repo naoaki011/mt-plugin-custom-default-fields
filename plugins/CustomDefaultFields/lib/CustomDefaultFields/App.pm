@@ -102,8 +102,16 @@ __EOH__
 		}
 	}
 
+	if (my $label = $hash->{'tags_label'}) {
+		$$tmpl =~ s/<__trans phrase="Tags">/$label/g;
+	}
+
 	if (my $label = $hash->{'excerpt_label'}) {
 		$$tmpl =~ s/<__trans phrase="Excerpt">/$label/g;
+	}
+
+	if (my $label = $hash->{'keywords_label'}) {
+		$$tmpl =~ s/<__trans phrase="Keywords">/$label/g;
 	}
 
 	if (my $label = $hash->{'categories_label'}) {
