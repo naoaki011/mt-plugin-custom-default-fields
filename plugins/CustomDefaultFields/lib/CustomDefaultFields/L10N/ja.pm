@@ -20,6 +20,8 @@ use vars qw( %Lexicon );
 	'Extended field label.' => '「続き」フィールドのラベル',
 	'Excerpt field label.' => '「概要」フィールドのラベル',
 	'Categories field label.' => '「カテゴリー」フィールドのラベル',
+	'Tags field label.' => '「タグ」フィールドのラベル',
+	'Keywords field label.' => '「キーワード」フィールドのラベル',
 
 	'Height of category selector.' => '「カテゴリー」選択エリアの高さ',
 );

@@ -55,7 +55,7 @@ sub source_edit_entry {
 		$style .= <<__EOH__;
 #title-field {
 	position: absolute;
-	z-index: -1;
+	left: -999999px;
 }
 __EOH__
 	}
@@ -82,7 +82,7 @@ __EOH__
 		$style .= <<__EOH__;
 #editor, #editor-content {
 	position: absolute;
-	z-index: -1;
+	left: -999999px;;
 }
 #convert_breaks {
 	display: none;
@@ -139,6 +139,34 @@ __EOH__
 		#$$tmpl .= $style;
 		my $replace = '<mt:?include[^>]*name="include/footer.tmpl"[^>]*>';
 		$$tmpl =~ s#$replace#$style$&#i;
+	}
+}
+
+sub param_edit_entry {
+	my ($cb, $app, $param, $tmpl) = @_;
+
+	my $plugin = MT->component('CustomDefaultFields');
+	my $blog_id = $app->param('blog_id') or return;
+	my $hash = $plugin->get_config_hash('blog:' . $blog_id) || {};
+
+	foreach my $f (@{ $param->{field_loop} }) {
+		my $name = lc($f->{'field_name'});
+		if (my $label = $hash->{$name . '_label'}) {
+			$f->{'field_label'} = $label if $label !~ m/^<__trans phrase/;
+		}
+	}
+}
+
+sub source_blog_config {
+	my ($cb, $app, $tmpl) = @_;
+	my $version = $MT::VERSION;
+
+	if ($version < 5) {
+		;
+	}
+	else {
+		$$tmpl =~ s/\$disable_title_field_label/1/gi;
+		$$tmpl =~ s/\$disable_category_selector_height/1/gi;
 	}
 }
 

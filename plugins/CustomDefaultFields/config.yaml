@@ -1,6 +1,6 @@
 #plugin name
 name: CustomDefaultFields
-version: 0.1.3.1
+version: 0.2.0
 
 #about this plugin
 description: <__trans phrase="Customizing default field.">
@@ -13,7 +13,7 @@ doc_link: http://tec.toi-planning.net/mt/customdefaultfields#manual
 l10n_class: CustomDefaultFields::L10N
 
 #system_config_template: system_config.tmpl
-blog_config_template: blog_config.tmpl
+blog_config_template: custom_default_fields_blog_config.tmpl
 
 settings:
     hide_title:
@@ -62,3 +62,5 @@ settings:
 
 callbacks:
     MT::App::CMS::template_source.edit_entry: CustomDefaultFields::App::source_edit_entry
+    MT::App::CMS::template_param.edit_entry: CustomDefaultFields::App::param_edit_entry
+    MT::App::CMS::template_source.custom_default_fields_blog_config: CustomDefaultFields::App::source_blog_config

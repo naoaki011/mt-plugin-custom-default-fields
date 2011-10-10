@@ -1,0 +1,256 @@
+<mt:SetVar name="true" value="1" />
+<script type="text/javascript">
+function CDFNoToggleSubPrefs(c) {
+    var div = TC.elementOrId((c.name || c.id)+"-prefs") || TC.elementOrId((c.name || c.id)+'_prefs');
+    if (div) {
+        if (c.type) {
+            var on = c.type == 'checkbox' ? c.checked : c.value != 0;
+            if (! on) {
+                TC.removeClassName(div, "hidden");
+            } else {
+                TC.addClassName(div, "hidden");
+            }
+            // div.style.display = on ? "block" : "none";
+        } else {
+            var on = div.style.display && div.style.display != "none";
+            if (! on) {
+                TC.addClassName(div, "hidden");
+            } else {
+                TC.removeClassName(div, "hidden");
+            }
+            // div.style.display = on ? "none" : "block";
+        }
+    }
+    return false;
+}
+</script>
+
+<input type="hidden" name="custom_default_fields_blog_config_beacon" value="1"/>
+
+<p style="border-bottom: 1px solid #ccc;"><__trans phrase="Settings about entry."></p>
+
+<mtapp:setting
+	id="hide_title"
+	label="<__trans phrase="Hide title field.">"
+	>
+	<ul>
+		<li><input type="checkbox" name="hide_title" id="hide_title" value="1" <mt:if var="hide_title">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+	</ul>
+</mtapp:setting>
+<div id="hide_title-prefs" class="<mt:If var="hide_title" eq="1">hidden</mt:if>">
+	<mtapp:setting
+		id="title_is_textarea"
+		label="<__trans phrase="Make title field TEXTAREA.">"
+		>
+		<ul>
+			<li><input type="checkbox" name="title_is_textarea" id="title_is_textarea" value="1" <mt:if var="title_is_textarea">checked="checked"</mt:if> onclick="toggleSubPrefs(this)" /></li>
+		</ul>
+	</mtapp:setting>
+	<div id="title_is_textarea-prefs" class="<mt:If var="title_is_textarea" eq="0">hidden</mt:if>">
+		<mtapp:setting
+			id="title_textarea_rows"
+			label="<__trans phrase="Title TEXTAREA field&#036;s rows.">"
+			>
+			<ul>
+				<li><input name="title_textarea_rows" id="title_textarea_rows" size="2" value="<mt:var name="title_textarea_rows">" /></li>
+			</ul>
+		</mtapp:setting>
+	</div>
+<mt:Unless name="true" eq="$disable_title_field_label">
+	<mtapp:setting
+		id="title_label"
+		label="<__trans phrase="Title field label.">"
+		>
+		<ul><li><input name="title_label" id="title_label" value="<mt:var name="title_label">" /></li></ul>
+	</mtapp:setting>
+</mt:Unless>
+</div>
+
+<mtapp:setting
+	id="hide_body"
+	label="<__trans phrase="Hide body field.">"
+	>
+	<ul>
+		<li><input type="checkbox" name="hide_body" id="hide_body" value="1" <mt:if var="hide_body">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+	</ul>
+</mtapp:setting>
+<div id="hide_body-prefs" class="<mt:If var="hide_body" eq="1">hidden</mt:if>">
+	<mtapp:setting
+		id="body_label"
+		label="<__trans phrase="Body field label.">"
+		>
+		<ul>
+			<li><input name="body_label" id="body_label" value="<mt:var name="body_label">" /></li>
+		</ul>
+	</mtapp:setting>
+	<mtapp:setting
+		id="hide_extended"
+		label="<__trans phrase="Hide extended field.">"
+		>
+		<ul>
+			<li><input type="checkbox" name="hide_extended" id="hide_extended" value="1" <mt:if var="hide_extended">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+		</ul>
+	</mtapp:setting>
+	<div id="hide_extended-prefs" class="<mt:If var="hide_extended" eq="1">hidden</mt:if>">
+		<mtapp:setting
+			id="body_label"
+			label="<__trans phrase="Extended field label.">"
+			>
+			<ul>
+				<li><input name="extended_label" id="extended_label" value="<mt:var name="extended_label">" /></li>
+			</ul>
+		</mtapp:setting>
+	</div>
+</div>
+
+<mtapp:setting
+	id="tags_label"
+	label="<__trans phrase="Tags field label.">"
+	>
+	<ul>
+		<li><input name="tags_label" id="tags_label" value="<mt:var name="tags_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mtapp:setting
+	id="excerpt_label"
+	label="<__trans phrase="Excerpt field label.">"
+	>
+	<ul>
+		<li><input name="excerpt_label" id="excerpt_label" value="<mt:var name="excerpt_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mtapp:setting
+	id="keywords_label"
+	label="<__trans phrase="Keywords field label.">"
+	>
+	<ul>
+		<li><input name="keywords_label" id="keywords_label" value="<mt:var name="keywords_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mtapp:setting
+	id="categories_label"
+	label="<__trans phrase="Categories field label.">"
+	>
+	<ul>
+		<li><input name="categories_label" id="categories_label" value="<mt:var name="categories_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mt:Unless name="true" eq="$disable_category_selector_height">
+<mtapp:setting
+	id="category_selector_height"
+	label="<__trans phrase="Height of category selector.">"
+	>
+	<ul>
+		<li><input name="category_selector_height" id="category_selector_height" value="<mt:var name="category_selector_height">" /></li>
+	</ul>
+</mtapp:setting>
+</mt:Unless>
+
+<p style="border-bottom: 1px solid #ccc;"><__trans phrase="Settings about webpage."></p>
+
+<mtapp:setting
+	id="page_hide_title"
+	label="<__trans phrase="Hide title field.">"
+	>
+	<ul>
+		<li><input type="checkbox" name="page_hide_title" id="page_hide_title" value="1" <mt:if var="page_hide_title">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+	</ul>
+</mtapp:setting>
+<div id="page_hide_title-prefs" class="<mt:If var="page_hide_title" eq="1">hidden</mt:if>">
+	<mtapp:setting
+		id="page_title_is_textarea"
+		label="<__trans phrase="Make title field TEXTAREA.">"
+		>
+		<ul>
+			<li><input type="checkbox" name="page_title_is_textarea" id="page_title_is_textarea" value="1" <mt:if var="page_title_is_textarea">checked="checked"</mt:if> onclick="toggleSubPrefs(this)" /></li>
+		</ul>
+	</mtapp:setting>
+	<div id="page_title_is_textarea-prefs" class="<mt:If var="page_title_is_textarea" eq="0">hidden</mt:if>">
+		<mtapp:setting
+			id="page_title_textarea_rows"
+			label="<__trans phrase="Title TEXTAREA field&#036;s rows.">"
+			>
+			<ul>
+				<li><input name="page_title_textarea_rows" id="page_title_textarea_rows" size="2" value="<mt:var name="page_title_textarea_rows">" /></li>
+			</ul>
+		</mtapp:setting>
+	</div>
+<mt:Unless name="true" eq="$disable_title_field_label">
+	<mtapp:setting
+		id="page_title_label"
+		label="<__trans phrase="Title field label.">"
+		>
+		<ul>
+			<li><input name="page_title_label" id="page_title_label" value="<mt:var name="page_title_label">" /></li>
+		</ul>
+	</mtapp:setting>
+</mt:Unless>
+</div>
+
+<mtapp:setting
+	id="page_hide_body"
+	label="<__trans phrase="Hide body field.">"
+	>
+	<ul>
+		<li><input type="checkbox" name="page_hide_body" id="page_hide_body" value="1" <mt:if var="page_hide_body">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+	</ul>
+</mtapp:setting>
+<div id="page_hide_body-prefs" class="<mt:If var="page_hide_body" eq="1">hidden</mt:if>">
+	<mtapp:setting
+		id="page_body_label"
+		label="<__trans phrase="Body field label.">"
+		>
+		<ul>
+			<li><input name="page_body_label" id="page_body_label" value="<mt:var name="page_body_label">" /></li>
+		</ul>
+	</mtapp:setting>
+	<mtapp:setting
+		id="page_hide_extended"
+		label="<__trans phrase="Hide extended field.">"
+		>
+		<ul>
+			<li><input type="checkbox" name="page_hide_extended" id="page_hide_extended" value="1" <mt:if var="page_hide_extended">checked="checked"</mt:if> onclick="CDFNoToggleSubPrefs(this)" /></li>
+		</ul>
+	</mtapp:setting>
+	<div id="page_hide_extended-prefs" class="<mt:If var="page_hide_extended" eq="1">hidden</mt:if>">
+		<mtapp:setting
+			id="page_body_label"
+			label="<__trans phrase="Extended field label.">"
+			>
+			<ul>
+				<li><input name="page_extended_label" id="page_extended_label" value="<mt:var name="page_extended_label">" /></li>
+			</ul>
+		</mtapp:setting>
+	</div>
+</div>
+
+<mtapp:setting
+	id="page_tags_label"
+	label="<__trans phrase="Tags field label.">"
+	>
+	<ul>
+		<li><input name="page_tags_label" id="page_tags_label" value="<mt:var name="page_tags_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mtapp:setting
+	id="page_excerpt_label"
+	label="<__trans phrase="Excerpt field label.">"
+	>
+	<ul>
+		<li><input name="page_excerpt_label" id="page_excerpt_label" value="<mt:var name="page_excerpt_label">" /></li>
+	</ul>
+</mtapp:setting>
+
+<mtapp:setting
+	id="page_keywords_label"
+	label="<__trans phrase="Keywords field label.">"
+	>
+	<ul>
+		<li><input name="page_keywords_label" id="page_keywords_label" value="<mt:var name="page_keywords_label">" /></li>
+	</ul>
+</mtapp:setting>
